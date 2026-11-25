@@ -1,0 +1,5 @@
+agent-framework-foundry
+azure-identity
+python-dotenv
+streamlit
+requests

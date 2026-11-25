@@ -1,0 +1,18 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // User data isolation:
+    // A user can ONLY read, write, update, or delete documents within their own user tree.
+    // The user's authenticated Firebase UID must match the {userId} document path segment.
+    match /users/{userId}/{document=**} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Default deny: All other paths are strictly locked down.
+    match /{document=**} {
+      allow read, write: false;
+    }
+  }
+}

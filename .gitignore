@@ -1,0 +1,8 @@
+.env
+.venv/
+__pycache__/
+chat_history.db
+*.py[cod]
+.streamlit/secrets.toml
+*service-account*.json
+*firebase*.json
